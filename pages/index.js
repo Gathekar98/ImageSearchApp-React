@@ -80,47 +80,46 @@ export default function Home() {
           Search
         </button>
       </form>
-
       {history.length > 0 && (
-  <div className="mb-6 text-center">
-    <h2 className="font-semibold mb-2">Recent Searches:</h2>
-    
-    <div className="flex justify-center gap-2 flex-wrap mb-2">
-      {history.map((item, i) => (
-        <div
-        key={i}
-        className="border p-2 rounded-full relative w-fit hover:bg-pink-100"
-      >
-        <button
-          onClick={() => {
-            setQuery(item)
-            setPage(1)
-          }}
-          className="pr-3"
-        >
-          {item}
-        </button>
-      
-        <button
-          onClick={() => removeFromHistory(item)}
-          className="absolute top-0 right-0 bg-white border border-gray-400 rounded-full w-5 h-5 flex items-center justify-center text-xs text-black-600 shadow -translate-y-1 translate-x-1"
-          aria-label="Remove"
-        >
-          ✕
-        </button>
-      </div>
-      
-      ))}
-    </div>
+        <div className="mb-6 text-center">
+          <h2 className="font-semibold mb-2">Recent Searches:</h2>
+          
+          <div className="flex justify-center gap-2 flex-wrap mb-2">
+            {history.map((item, i) => (
+              <div
+              key={i}
+              className="border p-2 rounded-full relative w-fit hover:bg-pink-100"
+            >
+              <button
+                onClick={() => {
+                  setQuery(item)
+                  setPage(1)
+                }}
+                className="pr-3"
+              >
+                {item}
+              </button>
+            
+              <button
+                onClick={() => removeFromHistory(item)}
+                className="absolute top-0 right-0 bg-white border border-gray-400 rounded-full w-5 h-5 flex items-center justify-center text-xs text-black-600 shadow -translate-y-1 translate-x-1"
+                aria-label="Remove"
+              >
+                ✕
+              </button>
+            </div>
+            
+            ))}
+          </div>
 
-    <button
-      onClick={clearHistory}
-      className="text-sm text-blue-600 hover:underline mt-1"
-    >
-      Clear All Search History
-    </button>
-  </div>
-)}
+          <button
+            onClick={clearHistory}
+            className="text-sm text-blue-600 hover:underline mt-1"
+          >
+            Clear All Search History
+          </button>
+        </div>
+      )}
 
       {loading && (
         <div className="flex justify-center">
