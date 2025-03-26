@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { HeartIcon as HeartOutline } from '@heroicons/react/24/outline'
+import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid'
+
 
 export default function Home() {
   const [query, setQuery] = useState('')
@@ -37,6 +40,17 @@ export default function Home() {
     }
     setLoading(false)
   }
+  const removeFromHistory = (itemToRemove) => {
+    const updated = history.filter((item) => item !== itemToRemove)
+    setHistory(updated)
+    localStorage.setItem('searchHistory', JSON.stringify(updated))
+  }
+  
+  const clearHistory = () => {
+    setHistory([])
+    localStorage.removeItem('searchHistory')
+  }
+  
 
   const toggleFavorite = (image) => {
     const isFav = favorites.find((f) => f.id === image.id)
@@ -51,8 +65,8 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">🖼️ Image Search</h1>
+    <div className="min-h-screen p-6">
+      <h1 className="text-3xl font-bold text-center mb-6">Image Search</h1>
 
       <form onSubmit={searchImages} className="flex justify-center gap-2 mb-8">
         <input
@@ -68,21 +82,45 @@ export default function Home() {
       </form>
 
       {history.length > 0 && (
-        <div className="mb-6 text-center">
-          <h2 className="font-semibold mb-2">Recent Searches:</h2>
-          <div className="flex justify-center gap-3 flex-wrap">
-            {history.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => { setQuery(item); setPage(1); }}
-                className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+  <div className="mb-6 text-center">
+    <h2 className="font-semibold mb-2">Recent Searches:</h2>
+    
+    <div className="flex justify-center gap-2 flex-wrap mb-2">
+      {history.map((item, i) => (
+        <div
+        key={i}
+        className="border p-2 rounded-full relative w-fit hover:bg-pink-100"
+      >
+        <button
+          onClick={() => {
+            setQuery(item)
+            setPage(1)
+          }}
+          className="pr-3"
+        >
+          {item}
+        </button>
+      
+        <button
+          onClick={() => removeFromHistory(item)}
+          className="absolute top-0 right-0 bg-white border border-gray-400 rounded-full w-5 h-5 flex items-center justify-center text-xs text-black-600 shadow -translate-y-1 translate-x-1"
+          aria-label="Remove"
+        >
+          ✕
+        </button>
+      </div>
+      
+      ))}
+    </div>
+
+    <button
+      onClick={clearHistory}
+      className="text-sm text-blue-600 hover:underline mt-1"
+    >
+      Clear All Search History
+    </button>
+  </div>
+)}
 
       {loading && (
         <div className="flex justify-center">
@@ -104,7 +142,11 @@ export default function Home() {
               onClick={() => toggleFavorite(img)}
               className="absolute top-2 right-2 bg-white p-1 rounded-full shadow"
             >
-              {favorites.find((f) => f.id === img.id) ? '❤️' : '🤍'}
+              {favorites.find((f) => f.id === img.id) ? (
+                <HeartSolid className="h-6 w-6 text-red-500" />
+              ) : (
+                <HeartOutline className="h-6 w-6 text-gray-500" />
+              )}
             </button>
           </div>
         ))}
