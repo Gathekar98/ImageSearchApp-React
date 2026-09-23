@@ -146,3 +146,65 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .download-feedback { position: fixed; z-index: 10; top: 84px; right: 6.1vw; max-width: min(360px, calc(100vw - 32px)); padding: 12px 16px; border: 1px solid #e8d4d4; border-radius: 9px; background: #fff7f4; color: #653b4d; box-shadow: 0 8px 24px rgba(65,39,48,.12); font-size: 11px; }
 @media (max-width: 760px) { .download-feedback { top: 60px; right: 16px; } .download-button { padding: 0 7px; } }
 @media (max-width: 430px) { .download-button { min-height: 29px; padding: 0 6px; gap: 4px; font-size: 8px; } .image-card-actions { gap: 4px; } .download-button svg { width: 12px; height: 12px; } }
+/* Accessible type scale and touch targets */
+:root { --muted: #66575d; }
+body { font-size: 1rem; line-height: 1.5; }
+.sidebar-label, .section-kicker, .sidebar-section-title { font-size: 0.75rem; letter-spacing: .08em; color: #6d5a61; }
+.nav-item { font-size: 0.875rem; }
+.nav-count { font-size: 0.75rem; }
+.history-item > button:first-child { font-size: 0.875rem; }
+.clear-history, .sidebar-footnote, .breadcrumb, .topbar-saved { font-size: 0.75rem; }
+.sidebar-tip p, .sidebar-tip strong { font-size: 0.8125rem; }
+.sidebar-footnote, .breadcrumb, .clear-history, .sidebar-tip p { color: #66595e; }
+.eyebrow { font-size: 0.75rem; letter-spacing: .1em; }
+.hero-copy > p { font-size: 1rem; line-height: 1.55; }
+.search-form { min-height: 62px; }
+.search-form input { font-size: 1rem; }
+.search-submit { min-height: 46px; font-size: 0.875rem; }
+.search-clear { width: 36px; height: 36px; display: grid; place-items: center; }
+.suggestions > span, .suggestions button { font-size: 0.75rem; }
+.suggestions button { min-height: 36px; padding: 0 12px; }
+.results-heading h2 { font-size: 1.5rem; }
+.orientation-select { min-height: 40px; font-size: 0.8125rem; }
+.image-card-info { min-height: 76px; }
+.image-card-title { font-size: 0.875rem; line-height: 1.4; white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.image-card-credit { font-size: 0.75rem; color: #6b5d62; white-space: normal; }
+.image-card-actions { gap: 7px; }
+.download-button { min-height: 38px; padding: 0 10px; font-size: 0.75rem; }
+.save-button { width: 38px; height: 38px; }
+.pagination button { min-height: 42px; font-size: 0.8125rem; }
+.pagination > span { font-size: 0.75rem; }
+.empty-state h3 { font-size: 1.375rem; }
+.empty-state p { font-size: 0.875rem; color: #66595e; line-height: 1.6; }
+.text-action { min-height: 40px; font-size: 0.8125rem; }
+.loading-state { font-size: 0.875rem; }
+.notice { font-size: 0.875rem; }
+.error-notice button { font-size: 0.8125rem; }
+.page-footer { font-size: 0.75rem; color: #66595e; }
+.unsplash-link { min-height: 40px; font-size: 0.75rem; }
+.preview-download { min-height: 40px; font-size: 0.75rem; }
+.download-feedback { font-size: 0.875rem; }
+@media (max-width: 760px) {
+  .nav-item { font-size: 0.8125rem; }
+  .search-form input { font-size: 1rem; }
+  .search-submit { font-size: 0.875rem; }
+  .image-card-credit { font-size: 0.75rem; }
+}
+@media (max-width: 430px) {
+  .sidebar { flex-wrap: wrap; row-gap: 10px; }
+  .main-nav { width: 100%; justify-content: flex-end; }
+  .nav-item { font-size: 0.75rem; }
+  .nav-count { font-size: 0.75rem; }
+  .breadcrumb { font-size: 0.75rem; }
+  .search-form input { font-size: 1rem; }
+  .search-submit { font-size: 0.75rem; }
+  .suggestions > span { font-size: 0.75rem; }
+  .suggestions button { font-size: 0.75rem; }
+  .results-heading h2 { font-size: 1.3125rem; }
+  .download-button { min-height: 36px; padding: 0 8px; gap: 5px; font-size: 0.75rem; }
+  .image-card-actions { gap: 5px; }
+  .image-card-title { font-size: 0.875rem; }
+  .image-card-credit { font-size: 0.75rem; }
+  .page-footer { font-size: 0.75rem; }
+  .unsplash-link { font-size: 0.75rem; }
+}
