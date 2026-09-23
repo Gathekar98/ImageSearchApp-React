@@ -180,7 +180,7 @@ export default function Home() {
       <Head>
         <title>Frame — Visual Discovery</title>
         <meta name="description" content="Discover and save beautiful photography." />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
       </Head>
       <div className="app-shell">
       <aside className="sidebar">
